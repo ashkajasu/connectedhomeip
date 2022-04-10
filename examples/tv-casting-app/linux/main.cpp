@@ -144,7 +144,7 @@ CHIP_ERROR InitBindingHandlers()
 void HandleUDCSendExpiration(System::Layer * aSystemLayer, void * context)
 {
     Dnssd::DiscoveredNodeData * selectedCommissioner = (Dnssd::DiscoveredNodeData *)context;
-    
+
     // Send User Directed commissioning request
     ReturnOnFailure(Server::GetInstance().SendUserDirectedCommissioningRequest(chip::Transport::PeerAddress::UDP(
             selectedCommissioner->ipAddress[0], selectedCommissioner->port, selectedCommissioner->interfaceId)));
@@ -244,7 +244,7 @@ CHIP_ERROR RequestCommissioning(int index)
     {
         ChipLogError(AppServer, "No such commissioner with index %d exists", index);
         return CHIP_ERROR_INVALID_ARGUMENT;
-    } 
+    }
     PrepareForCommissioning(selectedCommissioner);
     return CHIP_NO_ERROR;
 }
